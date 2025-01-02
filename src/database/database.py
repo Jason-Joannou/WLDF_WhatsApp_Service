@@ -3,9 +3,9 @@ import logging
 from typing import Optional, Any, List, Tuple, Dict, Generic, TypeVar
 from contextlib import contextmanager, asynccontextmanager
 import sqlite3
-import psycopg2
 import aiosqlite
 import asyncpg
+import psycopg2
 
 T = TypeVar('T')
 AsyncT = TypeVar('AsyncT')

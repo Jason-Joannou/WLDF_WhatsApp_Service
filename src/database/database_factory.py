@@ -1,4 +1,4 @@
-from database import AsyncSQLiteDatabase, AsyncPostgresDatabase, PostgresDatabase, SQLiteDatabase, Database, AsyncDatabase
+from src.database.database import AsyncSQLiteDatabase, AsyncPostgresDatabase, PostgresDatabase, SQLiteDatabase, Database, AsyncDatabase
 from typing import Union
 class DatabaseFactory:
     # Factory for creating database instances
