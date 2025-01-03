@@ -1,4 +1,4 @@
-from app import db
+from extentions import db
 class Registration(db.Model):
     __tablename__ = 'registrations'
     

@@ -1,4 +1,4 @@
-from app import db
+from extentions import db
 
 class DanceStyle(db.Model):
     __tablename__ = 'dance_styles'
