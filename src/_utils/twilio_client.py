@@ -51,3 +51,16 @@ class TwilioClient:
         twiml = MessagingResponse()
         twiml.message(message)  # Create the TwiML message.
         return str(twiml)  # Return the entire TwiML response as a string.
+    
+    def send_template_message(self, to: str, state: str) -> None:
+
+        if state == "unregistered":
+            message = self.client.messages.create(
+                to=to,
+                from_=self.from_number,
+                content_sid='HX107a155dc0472d64e9bc27b4ef3594b5'
+            )
+
+        return message.sid
+
+
