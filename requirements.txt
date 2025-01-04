@@ -18,3 +18,5 @@ asyncpg==0.30.0
 psycopg==3.2.3
 psycopg2==2.9.10
 flask[async]
+gspread
+oauth2client
