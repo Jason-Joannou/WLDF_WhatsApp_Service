@@ -1,12 +1,22 @@
-from src.database.database import AsyncSQLiteDatabase, AsyncPostgresDatabase, PostgresDatabase, SQLiteDatabase, Database, AsyncDatabase
+from src.database.database import AsyncSQLiteDatabase, AsyncPostgresDatabase, PostgresDatabase, SQLiteDatabase
 from typing import Union
+from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.ext.asyncio import async_sessionmaker
+
 class DatabaseFactory:
-    # Factory for creating database instances
     @staticmethod
-    def create_database(db_type: str, connection_params: str, is_async: bool = False) -> Union[Database, AsyncDatabase]:
+    def create_database(db_type: str, connection_params: str) -> Union[Session, AsyncSession]:
+        # Create appropriate database instance
         if db_type.lower() == "sqlite":
-            return AsyncSQLiteDatabase(connection_params) if is_async else SQLiteDatabase(connection_params)
+            db = AsyncSQLiteDatabase(connection_params)
+            engine = db.get_engine()
+            async_session = async_sessionmaker(engine, expire_on_commit=False)
+            return async_session()
         elif db_type.lower() == "postgres":
-            return AsyncPostgresDatabase(connection_params) if is_async else PostgresDatabase(connection_params)
+            db = AsyncPostgresDatabase(connection_params)
+            engine = db.get_engine()
+            async_session = async_sessionmaker(engine, expire_on_commit=False)
+            return async_session()
         else:
             raise ValueError(f"Unsupported database type: {db_type}")
