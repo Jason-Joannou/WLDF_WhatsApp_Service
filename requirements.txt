@@ -20,3 +20,4 @@ psycopg2==2.9.10
 flask[async]
 gspread
 oauth2client
+pandas
