@@ -7,5 +7,7 @@ class User(db.Model):
     role = db.Column(db.String(120), nullable=False)
     number = db.Column(db.String(120), nullable=False)
 
+    conversations = db.relationship('Conversation', back_populates='user', lazy='dynamic')
+    
     def __repr__(self):
         return f"User('{self.id}', '{self.role}', '{self.number}')"
