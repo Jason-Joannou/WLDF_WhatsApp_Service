@@ -52,6 +52,7 @@ class AsyncSQLiteDatabase(AsyncDatabase[aiosqlite.Connection]):
     def __init__(self, database: str):
         self.database = database
         self._connection: Optional[aiosqlite.Connection] = None
+        self._engine: Optional[AsyncEngine] = None
     
     async def get_connection(self) -> aiosqlite.Connection:
         if self._connection is None:
@@ -110,6 +111,7 @@ class AsyncPostgresDatabase(AsyncDatabase[asyncpg.Connection]):
         self.dsn = dsn
         self._connection: Optional[asyncpg.Connection] = None
         self._pool: Optional[asyncpg.Pool] = None
+        self._engine: Optional[AsyncEngine] = None
     
     async def get_connection(self) -> asyncpg.Connection:
         if self._pool is None:
