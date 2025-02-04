@@ -19,3 +19,9 @@ class ConversationState(str, Enum):
     DANCER_REGISTRATION = "dancer_registration"
     LICENSE_RENEWAL = "license_renewal"
     END = "end"
+
+class Templates(str, Enum):
+    # Template for unregistered and unknown role
+    UNREGISTERED_SELECTION_TEMPLATE = 'HX107a155dc0472d64e9bc27b4ef3594b5'
+    STUDIO_HEAD_AUTHENTICATION_TEMPLATE = "template_id"
+    AUTHENTICATED_STUDIO_HEAD_MENU_TEMPLATE = "template_id"
